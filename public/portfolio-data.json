@@ -1,0 +1,100 @@
+{
+  "personal": {
+    "name": "John Doe",
+    "title": "Full Stack Developer & Designer",
+    "bio": "With over 5 years of experience in web development, I specialize in creating scalable, user-friendly applications that solve real-world problems. My journey in tech has led me to work with cutting-edge technologies and collaborate with talented teams to bring innovative ideas to life.",
+    "shortIntro": "Passionate about creating beautiful, functional, and user-centered digital experiences",
+    "email": "john.doe@example.com",
+    "phone": "+1 (555) 123-4567",
+    "location": "San Francisco, CA",
+    "image": "/placeholder.svg"
+  },
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "twitter": "https://twitter.com/yourusername"
+  },
+  "skills": [
+    {
+      "title": "Frontend Development",
+      "description": "React, TypeScript, Next.js, Tailwind CSS",
+      "icon": "Code2"
+    },
+    {
+      "title": "Backend Development",
+      "description": "Node.js, Python, PostgreSQL, MongoDB",
+      "icon": "Database"
+    },
+    {
+      "title": "UI/UX Design",
+      "description": "Figma, Adobe XD, Responsive Design",
+      "icon": "Layout"
+    },
+    {
+      "title": "DevOps",
+      "description": "Docker, AWS, CI/CD, GitHub Actions",
+      "icon": "Rocket"
+    },
+    {
+      "title": "Design Systems",
+      "description": "Component Libraries, Style Guides",
+      "icon": "Palette"
+    },
+    {
+      "title": "Performance",
+      "description": "Optimization, SEO, Web Vitals",
+      "icon": "Zap"
+    }
+  ],
+  "projects": [
+    {
+      "title": "E-Commerce Platform",
+      "description": "A full-stack e-commerce solution with cart, payments, and admin dashboard",
+      "image": "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop",
+      "tags": ["React", "Node.js", "Stripe", "MongoDB"],
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/yourusername/project1"
+    },
+    {
+      "title": "Task Management App",
+      "description": "Collaborative task manager with real-time updates and team features",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
+      "tags": ["Next.js", "TypeScript", "Supabase"],
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/yourusername/project2"
+    },
+    {
+      "title": "AI Content Generator",
+      "description": "AI-powered content creation tool with multiple templates and export options",
+      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop",
+      "tags": ["React", "OpenAI", "TailwindCSS"],
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/yourusername/project3"
+    },
+    {
+      "title": "Portfolio Analytics",
+      "description": "Real-time analytics dashboard for tracking website metrics and user behavior",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+      "tags": ["Vue.js", "D3.js", "Firebase"],
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/yourusername/project4"
+    }
+  ],
+  "certificates": [
+    {
+      "title": "AWS Certified Solutions Architect",
+      "issuer": "Amazon Web Services",
+      "date": "2023"
+    },
+    {
+      "title": "Advanced React & Redux",
+      "issuer": "Udemy",
+      "date": "2022"
+    },
+    {
+      "title": "Full Stack Web Development",
+      "issuer": "freeCodeCamp",
+      "date": "2021"
+    }
+  ]
+}

@@ -1,100 +1,151 @@
 {
   "personal": {
-    "name": "John Doe",
-    "title": "Full Stack Developer & Designer",
-    "bio": "With over 5 years of experience in web development, I specialize in creating scalable, user-friendly applications that solve real-world problems. My journey in tech has led me to work with cutting-edge technologies and collaborate with talented teams to bring innovative ideas to life.",
-    "shortIntro": "Passionate about creating beautiful, functional, and user-centered digital experiences",
-    "email": "john.doe@example.com",
-    "phone": "+1 (555) 123-4567",
-    "location": "San Francisco, CA",
-    "image": "/placeholder.svg"
+    "name": "Sandeep Kumar",
+    "title": "Cybersecurity Enthusiast",
+    "bio": "I am a passionate Cybersecurity student with a strong interest in ethical hacking, network security, and threat analysis. I enjoy learning how systems work and identifying vulnerabilities to improve security. I am building hands-on projects using tools like Nmap, Wireshark, and Linux to strengthen my practical skills. My goal is to start my career as a Security Analyst.",
+    "shortIntro": "Aspiring Security Analyst focused on ethical hacking and network security",
+    "email": "sandeepkumar652001@gmail.com",
+    "phone": "+91 1234567890",
+    "location": "India",
+    "image": "/profile.jpeg"
   },
   "social": {
-    "github": "https://github.com/yourusername",
-    "linkedin": "https://linkedin.com/in/yourusername",
-    "twitter": "https://twitter.com/yourusername"
+    "github": "https://github.com/SandeepTech06",
+    "linkedin": "https://www.linkedin.com/in/cse-sandeep-kumar/"
   },
   "skills": [
     {
-      "title": "Frontend Development",
-      "description": "React, TypeScript, Next.js, Tailwind CSS",
+      "title": "Network Security",
+      "description": "Network scanning, packet analysis, firewall configuration, IDS/IPS basics",
+      "icon": "Shield"
+    },
+    {
+      "title": "Security Tools",
+      "description": "Nmap, Wireshark, Burp Suite, Metasploit, John the Ripper",
+      "icon": "Wrench"
+    },
+    {
+      "title": "Linux & System Admin",
+      "description": "Kali Linux, command line, system hardening, log analysis",
+      "icon": "Terminal"
+    },
+    {
+      "title": "Threat Analysis",
+      "description": "Vulnerability assessment, risk analysis, OWASP Top 10",
+      "icon": "Search"
+    },
+    {
+      "title": "Programming",
+      "description": "Python, Bash scripting, C, C++",
       "icon": "Code2"
     },
     {
-      "title": "Backend Development",
-      "description": "Node.js, Python, PostgreSQL, MongoDB",
-      "icon": "Database"
-    },
-    {
-      "title": "UI/UX Design",
-      "description": "Figma, Adobe XD, Responsive Design",
-      "icon": "Layout"
-    },
-    {
-      "title": "DevOps",
-      "description": "Docker, AWS, CI/CD, GitHub Actions",
-      "icon": "Rocket"
-    },
-    {
-      "title": "Design Systems",
-      "description": "Component Libraries, Style Guides",
-      "icon": "Palette"
-    },
-    {
-      "title": "Performance",
-      "description": "Optimization, SEO, Web Vitals",
-      "icon": "Zap"
+      "title": "Web Application Security",
+      "description": "XSS, SQL Injection, CSRF, security headers, secure coding",
+      "icon": "Globe"
     }
   ],
   "projects": [
     {
-      "title": "E-Commerce Platform",
-      "description": "A full-stack e-commerce solution with cart, payments, and admin dashboard",
-      "image": "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop",
-      "tags": ["React", "Node.js", "Stripe", "MongoDB"],
-      "liveUrl": "https://example.com",
-      "githubUrl": "https://github.com/yourusername/project1"
+      "title": "Network Vulnerability Scanner",
+      "description": "Python-based tool that scans networks for open ports, identifies running services, and detects common vulnerabilities using Nmap integration and custom scripts",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop",
+      "tags": [
+        "Python",
+        "Nmap",
+        "Networking",
+        "Security"
+      ],
+      "liveUrl": "#",
+      "githubUrl": "https://github.com/SandeepTech06/network-scanner"
     },
     {
-      "title": "Task Management App",
-      "description": "Collaborative task manager with real-time updates and team features",
-      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
-      "tags": ["Next.js", "TypeScript", "Supabase"],
-      "liveUrl": "https://example.com",
-      "githubUrl": "https://github.com/yourusername/project2"
+      "title": "Packet Sniffer & Analyzer",
+      "description": "Custom packet capture tool built with Scapy that monitors network traffic in real-time, detects anomalies, and generates detailed security reports",
+      "image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=500&fit=crop",
+      "tags": [
+        "Python",
+        "Scapy",
+        "Wireshark",
+        "Network Analysis"
+      ],
+      "liveUrl": "#",
+      "githubUrl": "https://github.com/SandeepTech06/packet-analyzer"
     },
     {
-      "title": "AI Content Generator",
-      "description": "AI-powered content creation tool with multiple templates and export options",
-      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop",
-      "tags": ["React", "OpenAI", "TailwindCSS"],
-      "liveUrl": "https://example.com",
-      "githubUrl": "https://github.com/yourusername/project3"
+      "title": "Password Strength Auditor",
+      "description": "Security tool that checks passwords against common wordlists, analyzes hashing algorithms, and recommends improvements for password policies",
+      "image": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=500&fit=crop",
+      "tags": [
+        "Python",
+        "Cryptography",
+        "Security",
+        "Hashlib"
+      ],
+      "liveUrl": "#",
+      "githubUrl": "https://github.com/SandeepTech06/password-auditor"
     },
     {
-      "title": "Portfolio Analytics",
-      "description": "Real-time analytics dashboard for tracking website metrics and user behavior",
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
-      "tags": ["Vue.js", "D3.js", "Firebase"],
-      "liveUrl": "https://example.com",
-      "githubUrl": "https://github.com/yourusername/project4"
+      "title": "Linux System Hardening Scripts",
+      "description": "Collection of Bash scripts to automate security hardening on Linux servers — firewall rules, SSH config, user audit, and centralized log monitoring",
+      "image": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=500&fit=crop",
+      "tags": [
+        "Bash",
+        "Linux",
+        "System Admin",
+        "Security"
+      ],
+      "liveUrl": "#",
+      "githubUrl": "https://github.com/SandeepTech06/linux-hardening"
     }
   ],
   "certificates": [
     {
-      "title": "AWS Certified Solutions Architect",
-      "issuer": "Amazon Web Services",
-      "date": "2023"
+      "title": "Google Cybersecurity Professional Certificate",
+      "issuer": "Google (via Coursera)",
+      "date": "2024"
     },
     {
-      "title": "Advanced React & Redux",
-      "issuer": "Udemy",
-      "date": "2022"
+      "title": "Introduction to Cybersecurity",
+      "issuer": "Cisco Networking Academy",
+      "date": "2024"
     },
     {
-      "title": "Full Stack Web Development",
-      "issuer": "freeCodeCamp",
-      "date": "2021"
+      "title": "CompTIA Security+ (In Progress)",
+      "issuer": "CompTIA",
+      "date": "2025"
+    },
+    {
+      "title": "TryHackMe — Pre Security Path",
+      "issuer": "TryHackMe",
+      "date": "2024"
+    }
+  ],
+  "education": {
+    "degree": "B.Tech in Computer Science (Cybersecurity)",
+    "university": "Your University Name",
+    "year": "2023 – 2027",
+    "coursework": [
+      "Network Security",
+      "Ethical Hacking",
+      "Cryptography",
+      "Operating Systems",
+      "Computer Networks",
+      "Data Structures & Algorithms"
+    ]
+  },
+  "ctfProfiles": [
+    {
+      "platform": "TryHackMe",
+      "username": "YourUsername",
+      "profileUrl": "https://tryhackme.com/p/YourUsername",
+      "description": "Completed Pre Security, Introduction to Cyber Security, and Linux Fundamentals paths"
+    },
+    {
+      "platform": "HackTheBox",
+      "username": "YourUsername",
+      "profileUrl": "https://app.hackthebox.com/profile/YourProfile",
+      "description": "Active learner solving beginner-level machines and challenges"
     }
   ]
 }

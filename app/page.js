@@ -1,4 +1,4 @@
-import { Navigation } from "@/components/Navigation"
+﻿import { Navigation } from "@/components/Navigation"
 import { HeroSection } from "@/components/HeroSection"
 import { AboutSection } from "@/components/AboutSection"
 import { SkillsSection } from "@/components/SkillsSection"
@@ -15,7 +15,8 @@ export default async function Home() {
   const data = await getPortfolioData()
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative overflow-x-clip">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
       <Navigation name={data.personal.name} />
       <HeroSection personal={data.personal} social={data.social} />
       <AboutSection personal={data.personal} />
@@ -30,3 +31,4 @@ export default async function Home() {
     </div>
   )
 }
+

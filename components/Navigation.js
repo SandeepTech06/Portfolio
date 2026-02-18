@@ -1,9 +1,9 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Moon, Sun, Menu, X } from "lucide-react"
-import { useTheme } from "@/contexts/ThemeContext"
+import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 
 const navItems = [
@@ -17,18 +17,21 @@ const navItems = [
 ]
 
 export function Navigation({ name }) {
-  const { theme, toggleTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
-  // Handle scroll to update navbar background
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
 
-      // Update active section
-      const sections = navItems.map(item => item.href.slice(1))
+      const sections = navItems.map((item) => item.href.slice(1))
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
@@ -44,6 +47,12 @@ export function Navigation({ name }) {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const isDark = mounted && theme === "dark"
+
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark")
+  }
 
   const scrollToSection = (href) => {
     const id = href.slice(1)
@@ -65,21 +74,19 @@ export function Navigation({ name }) {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
+            ? "bg-background/85 backdrop-blur-xl border-b border-border shadow-sm"
             : "bg-transparent"
         )}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo/Name */}
             <button
               onClick={scrollToTop}
-              className="text-xl font-bold text-foreground hover:text-primary transition-colors"
+              className="text-lg md:text-xl font-semibold text-foreground hover:text-primary transition-colors"
             >
               {name}
             </button>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               <div className="flex items-center gap-6">
                 {navItems.map((item) => (
@@ -101,29 +108,28 @@ export function Navigation({ name }) {
                 ))}
               </div>
 
-              {/* Theme Toggle */}
               <Button
-                variant="ghost"
+                variant="outline"
                 size="icon"
                 onClick={toggleTheme}
-                className="relative overflow-hidden"
+                className="relative"
                 aria-label="Toggle theme"
               >
-                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />
+                <Sun className={cn("h-5 w-5 transition-all", isDark ? "scale-0 rotate-90" : "scale-100 rotate-0")} />
+                <Moon className={cn("absolute h-5 w-5 transition-all", isDark ? "scale-100 rotate-0" : "scale-0 -rotate-90")} />
               </Button>
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="flex items-center gap-2 md:hidden">
               <Button
-                variant="ghost"
+                variant="outline"
                 size="icon"
                 onClick={toggleTheme}
                 aria-label="Toggle theme"
+                className="relative"
               >
-                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <Sun className={cn("h-5 w-5 transition-all", isDark ? "scale-0 rotate-90" : "scale-100 rotate-0")} />
+                <Moon className={cn("absolute h-5 w-5 transition-all", isDark ? "scale-100 rotate-0" : "scale-0 -rotate-90")} />
               </Button>
 
               <Button
@@ -132,20 +138,15 @@ export function Navigation({ name }) {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
               >
-                {mobileMenuOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
+                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={cn(
-            "md:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-border bg-background/95 backdrop-blur-lg",
+            "md:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-border bg-background/95 backdrop-blur-xl",
             mobileMenuOpen ? "max-h-64" : "max-h-0"
           )}
         >
@@ -168,8 +169,8 @@ export function Navigation({ name }) {
         </div>
       </nav>
 
-      {/* Spacer to prevent content from going under fixed navbar */}
       <div className="h-16" />
     </>
   )
 }
+

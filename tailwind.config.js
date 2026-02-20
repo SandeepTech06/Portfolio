@@ -113,6 +113,13 @@ module.exports = {
             transform: "scale(1)",
           },
         },
+        "glitch-flicker": {
+          "0%, 100%": { opacity: "1" },
+          "10%": { opacity: "0.3" },
+          "12%": { opacity: "1" },
+          "14%": { opacity: "0.5" },
+          "16%": { opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -120,6 +127,7 @@ module.exports = {
         "fade-in": "fade-in 0.6s ease-out",
         "slide-up": "slide-up 0.6s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
+        "glitch-flicker": "glitch-flicker 0.4s ease-in-out",
       },
       boxShadow: {
         glow: "var(--shadow-glow)",

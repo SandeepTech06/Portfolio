@@ -123,7 +123,7 @@
   ],
   "education": {
     "degree": "B.Tech in Computer Science (Cybersecurity)",
-    "university": "Your University Name",
+    "university": "Lovely Professional University",
     "year": "2023 – 2027",
     "coursework": [
       "Network Security",
@@ -137,14 +137,14 @@
   "ctfProfiles": [
     {
       "platform": "TryHackMe",
-      "username": "YourUsername",
-      "profileUrl": "https://tryhackme.com/p/YourUsername",
+      "username": "Sandeep605",
+      "profileUrl": "https://tryhackme.com/p/Sandeep605",
       "description": "Completed Pre Security, Introduction to Cyber Security, and Linux Fundamentals paths"
     },
     {
       "platform": "HackTheBox",
-      "username": "YourUsername",
-      "profileUrl": "https://app.hackthebox.com/profile/YourProfile",
+      "username": "Sandeep605",
+      "profileUrl": "https://profile.hackthebox.com",
       "description": "Active learner solving beginner-level machines and challenges"
     }
   ]

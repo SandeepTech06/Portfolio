@@ -96,7 +96,7 @@ export function Footer({ personal, social }) {
 
           <div data-gsap="footer" className="pt-8 border-t border-primary/15 text-center text-sm text-muted-foreground">
             <p className="flex items-center justify-center gap-1 font-mono">
-              © {currentYear} {personal.name}. Made with <Heart className="h-4 w-4 text-destructive fill-destructive" /> using Next.js
+              © {currentYear} {personal.name} 
             </p>
           </div>
         </div>

@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from "react"
 import { Card } from "@/components/ui/card"
-import { Award } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Award, Download, ExternalLink } from "lucide-react"
 import { getGsap } from "@/lib/gsap"
 import { attachCardTilt } from "@/lib/cardTilt"
 import { GlitchText } from "@/components/GlitchText"
@@ -95,12 +96,14 @@ export function CertificatesSection({ certificates }) {
           />
         </div>
 
-        <p data-gsap="cert-heading" className="section-subtitle mb-14">Certifications and milestones that showcase my learning journey.</p>
+        <p data-gsap="cert-heading" className="section-subtitle mb-14">
+          Certifications and milestones that showcase my learning journey. Open or download each certificate below.
+        </p>
 
         <div className="max-w-4xl mx-auto space-y-6">
           {certificates.map((cert, index) => (
             <Card
-              key={`${cert.title}-${index}`}
+              key={`${cert.fileName || cert.title || "certificate"}-${index}`}
               data-gsap="cert-card"
               data-tilt-card
               className="relative overflow-hidden p-6 rounded-2xl section-card transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-glow)] group"
@@ -113,9 +116,27 @@ export function CertificatesSection({ certificates }) {
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-foreground tracking-wide">{cert.title}</h3>
-                  <p className="text-muted-foreground mt-1">{cert.issuer}</p>
-                  <p className="text-sm text-muted-foreground/80 mt-1 font-mono">{cert.date}</p>
+                  <h3 className="text-xl font-semibold text-foreground tracking-wide">{cert.title || `Certificate ${index + 1}`}</h3>
+                  {cert.issuer && <p className="text-muted-foreground mt-1">{cert.issuer}</p>}
+                  {cert.date && <p className="text-sm text-muted-foreground/80 mt-1 font-mono">{cert.date}</p>}
+                  {cert.fileName && <p className="text-xs text-muted-foreground/70 mt-2 font-mono break-all">{cert.fileName}</p>}
+
+                  {cert.fileUrl && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <Button size="sm" className="shadow-[0_0_14px_hsl(var(--primary)/0.22)] hover:shadow-[0_0_22px_hsl(var(--primary)/0.35)]" asChild>
+                        <a href={cert.fileUrl} target="_blank" rel="noopener noreferrer">
+                          View Certificate
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </a>
+                      </Button>
+                      <Button size="sm" variant="outline" className="border-primary/30 bg-primary/5 hover:bg-primary/10" asChild>
+                        <a href={cert.fileUrl} download={cert.fileName || `${cert.title || `certificate-${index + 1}`}.pdf`}>
+                          Download
+                          <Download className="ml-2 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
             </Card>

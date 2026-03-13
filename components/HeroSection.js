@@ -193,9 +193,9 @@ export function HeroSection({ personal, social }) {
             </Button>
 
             <Button size="lg" variant="secondary" className="bg-secondary/80 border border-border/80 hover:bg-secondary" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/MyCV.pdf" target="_blank" rel="noopener noreferrer">
                 <FileDown className="mr-2 h-4 w-4" />
-                Download Resume
+                Download CV
               </a>
             </Button>
           </div>

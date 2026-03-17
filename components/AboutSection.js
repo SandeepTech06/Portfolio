@@ -123,15 +123,17 @@ export function AboutSection({ personal }) {
               <div className="relative flex justify-end md:justify-center">
                 <div className="inline-block rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/20 p-2 transition duration-500 hover:border-primary/40 hover:shadow-[0_0_20px_hsl(var(--primary)/0.2)]">
                   {personal.image && personal.image !== "/placeholder.svg" ? (
-                    <Image
-                      src={personal.image}
-                      alt={personal.name}
-                      width={384}
-                      height={384}
-                      className="w-96 h-96 object-cover object-[35%_35%] rounded-xl"
-                    />
+                    <div className="relative mx-auto h-[320px] w-[250px] sm:h-[360px] sm:w-[280px] md:h-[420px] md:w-[320px] overflow-hidden rounded-xl -translate-y-2">
+                      <Image
+                        src={personal.image}
+                        alt={personal.name}
+                        fill
+                        sizes="(max-width: 640px) 250px, (max-width: 768px) 280px, 320px"
+                        className="object-cover object-top"
+                      />
+                    </div>
                   ) : (
-                    <div className="w-48 h-48 rounded-full bg-gradient-to-br from-primary to-accent opacity-20"></div>
+                    <div className="mx-auto h-[320px] w-[250px] sm:h-[360px] sm:w-[280px] md:h-[420px] md:w-[320px] rounded-xl bg-gradient-to-br from-primary to-accent opacity-20 -translate-y-2"></div>
                   )}
                 </div>
               </div>

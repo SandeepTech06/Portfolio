@@ -1,0 +1,46 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111F1B"/>
+      <stop offset="0.52" stop-color="#10342D"/>
+      <stop offset="1" stop-color="#171B38"/>
+    </linearGradient>
+    <linearGradient id="bookA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7DECB5"/>
+      <stop offset="1" stop-color="#4BA5FF"/>
+    </linearGradient>
+    <linearGradient id="bookB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#B6F3A2"/>
+      <stop offset="1" stop-color="#50D0A9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <circle cx="1040" cy="120" r="250" fill="#1D4C6D" fill-opacity="0.3"/>
+  <circle cx="170" cy="620" r="280" fill="#27406A" fill-opacity="0.26"/>
+
+  <g transform="translate(180 120)">
+    <rect x="0" y="340" width="840" height="14" rx="7" fill="#4EA893" fill-opacity="0.5"/>
+
+    <rect x="40" y="120" width="120" height="220" rx="10" fill="url(#bookA)"/>
+    <rect x="164" y="100" width="112" height="240" rx="10" fill="#2EA688"/>
+    <rect x="280" y="132" width="118" height="208" rx="10" fill="url(#bookB)"/>
+    <rect x="404" y="84" width="128" height="256" rx="10" fill="#4F78FF"/>
+    <rect x="536" y="112" width="110" height="228" rx="10" fill="#5ECFA2"/>
+    <rect x="650" y="140" width="120" height="200" rx="10" fill="#88D892"/>
+
+    <rect x="470" y="0" width="300" height="70" rx="14" fill="#10272A" stroke="#81E7B8" stroke-opacity="0.7"/>
+    <text x="492" y="44" fill="#C9FBE2" font-family="'Segoe UI', Arial, sans-serif" font-size="30" font-weight="600">Catalog Search</text>
+    <rect x="440" y="200" width="370" height="120" rx="14" fill="#0C1F2A" stroke="#6BDCB6" stroke-opacity="0.55"/>
+    <text x="464" y="245" fill="#A8EED3" font-family="'Consolas', monospace" font-size="22">Issued: 1452 | Returned: 1387</text>
+    <text x="464" y="282" fill="#7ED5FF" font-family="'Consolas', monospace" font-size="20">Members: 412 | Overdue: 19</text>
+  </g>
+
+  <g transform="translate(60 120)">
+    <rect x="0" y="0" width="86" height="56" rx="12" fill="#183946" stroke="#79CBE0" stroke-width="2"/>
+    <text x="16" y="35" fill="#B0EAF9" font-family="'Segoe UI', Arial, sans-serif" font-size="18">SQL</text>
+  </g>
+
+  <text x="88" y="614" fill="#D2FFE9" font-family="'Segoe UI', Arial, sans-serif" font-size="48" font-weight="700">Library Management System</text>
+  <text x="88" y="654" fill="#9FE5CF" font-family="'Segoe UI', Arial, sans-serif" font-size="24">AI-style concept art | Flask CRUD and database workflow</text>
+</svg>

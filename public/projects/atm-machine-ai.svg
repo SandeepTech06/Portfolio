@@ -1,0 +1,50 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0F1428"/>
+      <stop offset="0.55" stop-color="#10253D"/>
+      <stop offset="1" stop-color="#1A0E30"/>
+    </linearGradient>
+    <linearGradient id="atm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#46D2FF"/>
+      <stop offset="1" stop-color="#4D69FF"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <circle cx="110" cy="110" r="210" fill="#204A74" fill-opacity="0.35"/>
+  <circle cx="1060" cy="610" r="320" fill="#3A1C63" fill-opacity="0.3"/>
+
+  <g transform="translate(300 90)" filter="url(#glow)">
+    <rect x="0" y="0" width="460" height="500" rx="30" fill="#0D2238" stroke="url(#atm)" stroke-width="4"/>
+    <rect x="62" y="54" width="336" height="180" rx="18" fill="#102E4D" stroke="#7BD9FF" stroke-opacity="0.7"/>
+    <rect x="92" y="84" width="276" height="120" rx="12" fill="#0B1B2E"/>
+    <text x="112" y="132" fill="#99E3FF" font-family="'Consolas', monospace" font-size="26">WELCOME USER</text>
+    <text x="112" y="168" fill="#7FC6FF" font-family="'Consolas', monospace" font-size="20">Balance: $12,450</text>
+
+    <rect x="62" y="264" width="336" height="84" rx="12" fill="#0F2A44" stroke="#6DD6FF" stroke-opacity="0.5"/>
+    <rect x="82" y="284" width="110" height="44" rx="8" fill="#4FC4FF" fill-opacity="0.22" stroke="#62D9FF"/>
+    <rect x="206" y="284" width="110" height="44" rx="8" fill="#4FC4FF" fill-opacity="0.22" stroke="#62D9FF"/>
+    <rect x="330" y="284" width="48" height="44" rx="8" fill="#4FC4FF" fill-opacity="0.22" stroke="#62D9FF"/>
+
+    <rect x="62" y="374" width="336" height="88" rx="14" fill="#0A1728" stroke="#5072A9" stroke-opacity="0.55"/>
+    <rect x="236" y="408" width="138" height="14" rx="7" fill="#82D9FF"/>
+    <text x="82" y="420" fill="#84C8F8" font-family="'Segoe UI', Arial, sans-serif" font-size="19">Card Slot</text>
+  </g>
+
+  <g transform="translate(820 210)">
+    <circle cx="90" cy="100" r="88" fill="#183862" stroke="#79C8FF" stroke-width="4"/>
+    <path d="M52 102L80 130L130 78" stroke="#8EF3B5" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="28" y="208" fill="#A9D7FF" font-family="'Segoe UI', Arial, sans-serif" font-size="22">Secure</text>
+  </g>
+
+  <text x="88" y="614" fill="#CAE8FF" font-family="'Segoe UI', Arial, sans-serif" font-size="48" font-weight="700">ATM Machine System</text>
+  <text x="88" y="654" fill="#91C8F4" font-family="'Segoe UI', Arial, sans-serif" font-size="24">AI-style concept art | Python Flask banking simulation</text>
+</svg>

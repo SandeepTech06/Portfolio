@@ -72,6 +72,8 @@ export function ProjectsSection({ projects }) {
     return () => ctx.revert()
   }, [])
 
+  if (!projects || projects.length === 0) return null
+
   return (
     <section ref={sectionRef} id="projects" className="relative py-28">
       <div className="relative z-10 container mx-auto px-4">
@@ -86,63 +88,89 @@ export function ProjectsSection({ projects }) {
         </div>
 
         <p data-gsap="projects" className="section-subtitle mb-14">
-          Real-world projects showcasing my skills in cybersecurity and development.
+          Real-world projects showcasing my skills in cybersecurity and software development.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {projects.map((project) => (
-            <Card
-              key={project.title}
-              data-gsap="projects"
-              className="group relative overflow-hidden rounded-2xl section-card transform transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-[var(--shadow-glow)]"
-            >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-primary/8 via-transparent to-accent/8"></div>
+          {projects.map((project) => {
+            const hasLiveUrl = Boolean(project.liveUrl && project.liveUrl !== "#")
+            const hasGithubUrl = Boolean(project.githubUrl && project.githubUrl !== "#")
 
-              <div className="relative h-44 overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent"></div>
-                {/* Glitch flicker overlay on hover */}
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 group-hover:animate-glitch-flicker transition-opacity pointer-events-none"></div>
-              </div>
+            return (
+              <Card
+                key={project.title}
+                data-gsap="projects"
+                className="group relative overflow-hidden rounded-2xl section-card transform transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-[var(--shadow-glow)]"
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-primary/8 via-transparent to-accent/8"></div>
 
-              <CardHeader className="pb-2 relative">
-                <CardTitle className="text-foreground tracking-wide">{project.title}</CardTitle>
-                <CardDescription className="text-muted-foreground leading-snug text-sm">{project.description}</CardDescription>
-              </CardHeader>
-
-              <CardContent className="pt-2 pb-3 relative">
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} data-gsap="project-badge" variant="secondary" className="border border-border hover:border-primary/40 transition-colors">
-                      {tag}
-                    </Badge>
-                  ))}
+                <div className="relative h-44 overflow-hidden">
+                  <Image
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent"></div>
+                  {/* Glitch flicker overlay on hover */}
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 group-hover:animate-glitch-flicker transition-opacity pointer-events-none"></div>
                 </div>
-              </CardContent>
 
-              <CardFooter className="gap-2 pt-2 relative">
-                <Button size="sm" variant="outline" asChild className="flex-1 hover:shadow-[0_0_10px_hsl(var(--primary)/0.2)]">
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Live Demo
-                  </a>
-                </Button>
+                <CardHeader className="pb-2 relative">
+                  <div className="flex items-start justify-between gap-3">
+                    <CardTitle className="text-foreground tracking-wide">{project.title}</CardTitle>
+                    {project.status && (
+                      <Badge variant="outline" className="border-primary/40 bg-primary/10 text-primary whitespace-nowrap">
+                        {project.status}
+                      </Badge>
+                    )}
+                  </div>
+                  <CardDescription className="text-muted-foreground leading-snug text-sm">{project.description}</CardDescription>
+                </CardHeader>
 
-                <Button size="sm" variant="outline" asChild className="flex-1 hover:shadow-[0_0_10px_hsl(var(--primary)/0.2)]">
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" />
-                    Code
-                  </a>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+                <CardContent className="pt-2 pb-3 relative">
+                  <div className="flex flex-wrap gap-2">
+                    {(project.tags || []).map((tag) => (
+                      <Badge key={tag} data-gsap="project-badge" variant="secondary" className="border border-border hover:border-primary/40 transition-colors">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+
+                <CardFooter className="gap-2 pt-2 relative">
+                  {hasLiveUrl ? (
+                    <Button size="sm" variant="outline" asChild className="flex-1 hover:shadow-[0_0_10px_hsl(var(--primary)/0.2)]">
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Live Demo
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button size="sm" variant="outline" disabled className="flex-1 opacity-70">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      Demo Soon
+                    </Button>
+                  )}
+
+                  {hasGithubUrl ? (
+                    <Button size="sm" variant="outline" asChild className="flex-1 hover:shadow-[0_0_10px_hsl(var(--primary)/0.2)]">
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-2 h-4 w-4" />
+                        Code
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button size="sm" variant="outline" disabled className="flex-1 opacity-70">
+                      <Github className="mr-2 h-4 w-4" />
+                      Code Soon
+                    </Button>
+                  )}
+                </CardFooter>
+              </Card>
+            )
+          })}
         </div>
       </div>
     </section>

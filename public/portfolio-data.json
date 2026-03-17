@@ -7,7 +7,7 @@
     "email": "sandeepkumar652001@gmail.com",
     "phone": "+91 9234419136",
     "location": "India",
-    "image": "/profile.jpeg"
+    "image": "/Sandeep1_.jpeg"
   },
   "social": {
     "github": "https://github.com/SandeepTech06",
@@ -47,56 +47,63 @@
   ],
   "projects": [
     {
-      "title": "Network Vulnerability Scanner",
-      "description": "Python-based tool that scans networks for open ports, identifies running services, and detects common vulnerabilities using Nmap integration and custom scripts",
-      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop",
+      "title": "PhishGuard Email Scanner",
+      "description": "An intelligent email security tool that scans message content for phishing indicators, evaluates risk signals, and flags potentially malicious emails before users interact with them.",
+      "image": "/projects/phishguard-ai.svg",
       "tags": [
-        "Python",
-        "Nmap",
-        "Networking",
-        "Security"
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "MongoDB",
+        "Browsing API",
+        "VirusTotal API",
+        "WhoisXML API"
       ],
-      "liveUrl": "#",
-      "githubUrl": "https://github.com/SandeepTech06/network-scanner"
+      "liveUrl": "https://phishguard-email.whoisalok.tech/",
+      "githubUrl": "https://github.com/SandeepTech06/PhishGuardEmailScan",
+      "status": "Live"
     },
     {
-      "title": "Packet Sniffer & Analyzer",
-      "description": "Custom packet capture tool built with Scapy that monitors network traffic in real-time, detects anomalies, and generates detailed security reports",
-      "image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=500&fit=crop",
+      "title": "Password Strength Checker",
+      "description": "Security-focused password checker that validates password strength using rules and pattern checks, with practical feedback for stronger credentials.",
+      "image": "/projects/password-checker-ai.svg",
       "tags": [
         "Python",
-        "Scapy",
-        "Wireshark",
-        "Network Analysis"
-      ],
-      "liveUrl": "#",
-      "githubUrl": "https://github.com/SandeepTech06/packet-analyzer"
-    },
-    {
-      "title": "Password Strength Auditor",
-      "description": "Security tool that checks passwords against common wordlists, analyzes hashing algorithms, and recommends improvements for password policies",
-      "image": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=500&fit=crop",
-      "tags": [
-        "Python",
-        "Cryptography",
+        "Flask",
         "Security",
-        "Hashlib"
+        "Validation"
       ],
-      "liveUrl": "#",
-      "githubUrl": "https://github.com/SandeepTech06/password-auditor"
+      "liveUrl": "",
+      "githubUrl": "https://github.com/SandeepTech06/Password-Strength-Checker",
+      "status": "Code Available"
     },
     {
-      "title": "Linux System Hardening Scripts",
-      "description": "Collection of Bash scripts to automate security hardening on Linux servers — firewall rules, SSH config, user audit, and centralized log monitoring",
-      "image": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=500&fit=crop",
+      "title": "ATM Machine System",
+      "description": "ATM machine simulation built with Python and Flask featuring account login, withdrawal, deposit, balance enquiry, and transaction flow handling.",
+      "image": "/projects/atm-machine-ai.svg",
       "tags": [
-        "Bash",
-        "Linux",
-        "System Admin",
-        "Security"
+        "Python",
+        "Flask",
+        "Backend",
+        "Authentication"
       ],
-      "liveUrl": "#",
-      "githubUrl": "https://github.com/SandeepTech06/linux-hardening"
+      "liveUrl": "",
+      "githubUrl": "",
+      "status": "In Development"
+    },
+    {
+      "title": "Library Management System",
+      "description": "Library management web app using Python and Flask for book cataloging, member tracking, issue-return operations, and basic admin workflows.",
+      "image": "/projects/library-management-ai.svg",
+      "tags": [
+        "Python",
+        "Flask",
+        "CRUD",
+        "Database"
+      ],
+      "liveUrl": "",
+      "githubUrl": "",
+      "status": "In Development"
     }
   ],
   "certificates": [
@@ -116,7 +123,7 @@
       "date": "2025"
     },
     {
-      "title": "TryHackMe — Pre Security Path",
+      "title": "TryHackMe - Pre Security Path",
       "issuer": "TryHackMe",
       "date": "2024"
     }
@@ -124,7 +131,7 @@
   "education": {
     "degree": "B.Tech in Computer Science (Cybersecurity)",
     "university": "Lovely Professional University",
-    "year": "2023 – 2027",
+    "year": "2023 - 2027",
     "coursework": [
       "Network Security",
       "Ethical Hacking",

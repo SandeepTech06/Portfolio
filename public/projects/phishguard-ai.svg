@@ -1,0 +1,55 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#051321"/>
+      <stop offset="0.6" stop-color="#0B1E36"/>
+      <stop offset="1" stop-color="#1A0E2E"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4FF6D2"/>
+      <stop offset="1" stop-color="#4A8BFF"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <circle cx="180" cy="90" r="220" fill="#1C4E73" fill-opacity="0.35"/>
+  <circle cx="1040" cy="620" r="300" fill="#3C1A64" fill-opacity="0.3"/>
+
+  <g stroke="#2CE7BF" stroke-opacity="0.25" stroke-width="1">
+    <path d="M70 130H1140"/>
+    <path d="M70 220H1140"/>
+    <path d="M70 310H1140"/>
+    <path d="M70 400H1140"/>
+    <path d="M70 490H1140"/>
+    <path d="M70 580H1140"/>
+  </g>
+
+  <g transform="translate(320 190)">
+    <rect x="0" y="0" width="360" height="250" rx="24" fill="#071A2B" stroke="#3CD7B7" stroke-opacity="0.5" stroke-width="3"/>
+    <path d="M40 60L180 155L320 60" stroke="#83FEE7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="40" y="60" width="280" height="150" rx="14" stroke="#83FEE7" stroke-opacity="0.6" stroke-width="6"/>
+    <circle cx="310" cy="205" r="16" fill="#FA5D7A"/>
+    <text x="56" y="105" fill="#B7FFF2" font-family="'Segoe UI', Arial, sans-serif" font-size="20">Threat Mail Detected</text>
+  </g>
+
+  <g transform="translate(700 150)" filter="url(#glow)">
+    <path d="M120 0L220 38V142C220 250 164 334 120 360C76 334 20 250 20 142V38L120 0Z" fill="url(#shield)" fill-opacity="0.95"/>
+    <path d="M76 182L108 214L164 152" stroke="white" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g fill="#FF7A93" fill-opacity="0.8">
+    <circle cx="740" cy="510" r="10"/>
+    <circle cx="770" cy="530" r="6"/>
+    <circle cx="800" cy="500" r="8"/>
+  </g>
+
+  <text x="88" y="614" fill="#B6FFF0" font-family="'Segoe UI', Arial, sans-serif" font-size="48" font-weight="700">PhishGuard Email Scanner</text>
+  <text x="88" y="654" fill="#82D4F3" font-family="'Segoe UI', Arial, sans-serif" font-size="24">AI-style concept art | Email threat detection dashboard</text>
+</svg>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
-export function MatrixRain({ className = '' }) {
+export function MatrixRain({ className = '', speed = 1 }) {
     const canvasRef = useRef(null)
 
     useEffect(() => {
@@ -11,6 +11,8 @@ export function MatrixRain({ className = '' }) {
 
         const ctx = canvas.getContext('2d')
         let animationId
+        let lastTime = 0
+        const frameDelay = 34 / Math.max(speed, 0.2)
 
         const resize = () => {
             canvas.width = canvas.offsetWidth
@@ -24,11 +26,16 @@ export function MatrixRain({ className = '' }) {
         const columns = Math.floor(canvas.width / fontSize)
         const drops = Array(columns).fill(1)
 
-        const draw = () => {
+        const draw = (timestamp = 0) => {
+            if (timestamp - lastTime < frameDelay) {
+                animationId = requestAnimationFrame(draw)
+                return
+            }
+            lastTime = timestamp
+
             ctx.fillStyle = 'rgba(0, 0, 0, 0.06)'
             ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-            const style = getComputedStyle(document.documentElement)
             const isDark = document.documentElement.classList.contains('dark')
 
             ctx.fillStyle = isDark
@@ -55,7 +62,7 @@ export function MatrixRain({ className = '' }) {
             cancelAnimationFrame(animationId)
             window.removeEventListener('resize', resize)
         }
-    }, [])
+    }, [speed])
 
     return (
         <canvas

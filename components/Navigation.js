@@ -2,8 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { Moon, Sun, Menu, X } from "lucide-react"
-import { useTheme } from "next-themes"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { getGsap } from "@/lib/gsap"
 
@@ -18,21 +17,15 @@ const navItems = [
 ]
 
 export function Navigation({ name }) {
-  const { theme, setTheme } = useTheme()
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
   const navRef = useRef(null)
   const linksRef = useRef(null)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   // GSAP stagger nav links on mount
   useEffect(() => {
-    if (!mounted || !linksRef.current) return
+    if (!linksRef.current) return
     const { gsap } = getGsap()
     const links = linksRef.current.querySelectorAll('[data-gsap="nav-link"]')
     if (links.length === 0) return
@@ -49,7 +42,7 @@ export function Navigation({ name }) {
         delay: 0.8,
       }
     )
-  }, [mounted])
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,12 +64,6 @@ export function Navigation({ name }) {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  const isDark = mounted && theme === "dark"
-
-  const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark")
-  }
 
   const scrollToSection = (href) => {
     const id = href.slice(1)
@@ -113,52 +100,28 @@ export function Navigation({ name }) {
               {name}
             </button>
 
-            <div ref={linksRef} className="hidden md:flex items-center gap-8">
-              <div className="flex items-center gap-6">
-                {navItems.map((item) => (
-                  <button
-                    key={item.href}
-                    data-gsap="nav-link"
-                    onClick={() => scrollToSection(item.href)}
-                    className={cn(
-                      "text-sm font-medium transition-all relative py-2",
-                      activeSection === item.href.slice(1)
-                        ? "text-primary"
-                        : "text-foreground/85 hover:text-primary"
-                    )}
-                  >
-                    {item.name}
-                    {activeSection === item.href.slice(1) && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
-                    )}
-                  </button>
-                ))}
-              </div>
-
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={toggleTheme}
-                className="relative border-primary/30 bg-primary/10 hover:bg-primary/15 hover:shadow-[0_0_10px_hsl(var(--primary)/0.25)]"
-                aria-label="Toggle theme"
-              >
-                <Sun className={cn("h-5 w-5 transition-all", isDark ? "scale-0 rotate-90" : "scale-100 rotate-0")} />
-                <Moon className={cn("absolute h-5 w-5 transition-all", isDark ? "scale-100 rotate-0" : "scale-0 -rotate-90")} />
-              </Button>
+            <div ref={linksRef} className="hidden md:flex items-center gap-6">
+              {navItems.map((item) => (
+                <button
+                  key={item.href}
+                  data-gsap="nav-link"
+                  onClick={() => scrollToSection(item.href)}
+                  className={cn(
+                    "text-sm font-medium transition-all relative py-2",
+                    activeSection === item.href.slice(1)
+                      ? "text-primary"
+                      : "text-foreground/85 hover:text-primary"
+                  )}
+                >
+                  {item.name}
+                  {activeSection === item.href.slice(1) && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
+                  )}
+                </button>
+              ))}
             </div>
 
-            <div className="flex items-center gap-2 md:hidden">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={toggleTheme}
-                aria-label="Toggle theme"
-                className="relative border-primary/30 bg-primary/10 hover:bg-primary/15"
-              >
-                <Sun className={cn("h-5 w-5 transition-all", isDark ? "scale-0 rotate-90" : "scale-100 rotate-0")} />
-                <Moon className={cn("absolute h-5 w-5 transition-all", isDark ? "scale-100 rotate-0" : "scale-0 -rotate-90")} />
-              </Button>
-
+            <div className="flex items-center md:hidden">
               <Button
                 variant="ghost"
                 size="icon"

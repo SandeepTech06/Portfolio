@@ -100,15 +100,15 @@ export function CertificatesSection({ certificates }) {
           Certifications and milestones that showcase my learning journey. Open or download each certificate below.
         </p>
 
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {certificates.map((cert, index) => (
             <Card
               key={`${cert.fileName || cert.title || "certificate"}-${index}`}
               data-gsap="cert-card"
               data-tilt-card
-              className="relative overflow-hidden p-6 rounded-2xl section-card transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-glow)] group"
+              className="section-card p-6 relative h-full overflow-hidden rounded-2xl transition-all duration-300 ease-out transform hover:-translate-y-2 hover:shadow-[var(--shadow-glow)] group cyber-grid-bg"
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-br from-primary/8 via-transparent to-accent/8"></div>
 
               <div className="relative z-10 flex items-start gap-5">
                 <div data-gsap="cert-icon" className="p-3 rounded-full bg-gradient-to-br from-primary/15 to-accent/15 border border-border group-hover:scale-105 group-hover:border-primary/50 group-hover:shadow-[0_0_14px_hsl(var(--primary)/0.3)] transition-all duration-500">

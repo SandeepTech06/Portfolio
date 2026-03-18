@@ -100,11 +100,11 @@ export function AboutSection({ personal }) {
             Get to know more about my background, passion, and goals in cybersecurity.
           </p>
 
-          <Card data-gsap="about-card" className="section-card p-8 relative overflow-hidden rounded-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[var(--shadow-glow)] group cyber-scanline">
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-primary/8 via-transparent to-accent/8"></div>
+          <Card data-gsap="about-card" className="section-card p-6 sm:p-8 relative overflow-hidden rounded-2xl transition-all duration-300 ease-out transform hover:-translate-y-2 hover:shadow-[var(--shadow-glow)] group cyber-grid-bg">
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-br from-primary/8 via-transparent to-accent/8"></div>
 
-            <div className="grid md:grid-cols-2 gap-10 items-center relative z-10">
-              <div className="space-y-5">
+            <div className="grid gap-10 md:grid-cols-[minmax(0,1.2fr)_minmax(240px,0.8fr)] md:gap-12 items-start relative z-10">
+              <div className="space-y-5 max-w-2xl">
                 <h3 className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">Aspiring Security Analyst</h3>
 
                 <p className="text-muted-foreground text-[17px] leading-relaxed tracking-wide">{personal.bio}</p>
@@ -120,20 +120,20 @@ export function AboutSection({ personal }) {
                 </div>
               </div>
 
-              <div className="relative flex justify-end md:justify-center">
-                <div className="inline-block rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/20 p-2 transition duration-500 hover:border-primary/40 hover:shadow-[0_0_20px_hsl(var(--primary)/0.2)]">
+              <div className="relative flex items-start justify-center md:justify-end">
+                <div className="w-full max-w-[320px] -translate-y-2 md:-translate-y-4 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/20 p-2 transition duration-500 hover:border-primary/40 hover:shadow-[0_0_20px_hsl(var(--primary)/0.2)]">
                   {personal.image && personal.image !== "/placeholder.svg" ? (
-                    <div className="relative mx-auto h-[320px] w-[250px] sm:h-[360px] sm:w-[280px] md:h-[420px] md:w-[320px] overflow-hidden rounded-xl -translate-y-2">
+                    <div className="relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-xl">
                       <Image
                         src={personal.image}
                         alt={personal.name}
                         fill
-                        sizes="(max-width: 640px) 250px, (max-width: 768px) 280px, 320px"
+                        sizes="(max-width: 768px) 70vw, (max-width: 1024px) 40vw, 320px"
                         className="object-cover object-top"
                       />
                     </div>
                   ) : (
-                    <div className="mx-auto h-[320px] w-[250px] sm:h-[360px] sm:w-[280px] md:h-[420px] md:w-[320px] rounded-xl bg-gradient-to-br from-primary to-accent opacity-20 -translate-y-2"></div>
+                    <div className="mx-auto aspect-[4/5] w-full rounded-xl bg-gradient-to-br from-primary to-accent opacity-20"></div>
                   )}
                 </div>
               </div>

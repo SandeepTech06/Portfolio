@@ -2,11 +2,11 @@
 
 import { useEffect, useRef } from "react"
 import Image from "next/image"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { ExternalLink, Github } from "lucide-react"
 import { getGsap } from "@/lib/gsap"
+import { cn } from "@/lib/utils"
 import { GlitchText } from "@/components/GlitchText"
 
 export function ProjectsSection({ projects }) {
@@ -19,25 +19,13 @@ export function ProjectsSection({ projects }) {
       revealItems.forEach((item, index) => {
         gsap.fromTo(
           item,
-          { autoAlpha: 0, y: 28, scale: 0.93, rotateY: -8 },
+          { autoAlpha: 0, y: 26 },
           {
             autoAlpha: 1,
             y: 0,
-            scale: 1,
-            rotateY: 0,
-            duration: 0.9,
-            delay: index * 0.08,
+            duration: 0.72,
+            delay: index * 0.06,
             ease: "power3.out",
-            transformPerspective: 1200,
-            onComplete: () => {
-              gsap
-                .timeline()
-                .to(item, { opacity: 0.4, duration: 0.04 })
-                .to(item, { opacity: 1, duration: 0.04 })
-                .to(item, { scale: 1.08, duration: 0.18, ease: "back.out(2.2)" })
-                .to(item, { scale: 0.987, duration: 0.12, ease: "power2.inOut" })
-                .to(item, { scale: 1, duration: 0.12, ease: "power2.out" })
-            },
             scrollTrigger: {
               trigger: item,
               start: "top 86%",
@@ -56,8 +44,8 @@ export function ProjectsSection({ projects }) {
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.35,
-            delay: idx * 0.03,
+            duration: 0.3,
+            delay: idx * 0.02,
             ease: "power2.out",
             scrollTrigger: {
               trigger: badge,
@@ -69,10 +57,35 @@ export function ProjectsSection({ projects }) {
       })
     }, sectionRef)
 
-    return () => ctx.revert()
+    return () => {
+      ctx.revert()
+    }
   }, [])
 
   if (!projects || projects.length === 0) return null
+  const fixedPhishGuardStack = [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "MongoDB",
+    "Browsing API",
+    "VirusTotal API",
+    "WhoisXML API",
+  ]
+
+  const statusClassName = (status) => {
+    const value = String(status || "").toLowerCase()
+    if (value.includes("live")) {
+      return "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+    }
+    if (value.includes("code")) {
+      return "bg-sky-500/10 text-sky-400 border-sky-500/30"
+    }
+    if (value.includes("development")) {
+      return "bg-amber-500/10 text-amber-400 border-amber-500/30"
+    }
+    return "bg-primary/10 text-primary border-primary/30"
+  }
 
   return (
     <section ref={sectionRef} id="projects" className="relative py-28">
@@ -87,87 +100,123 @@ export function ProjectsSection({ projects }) {
           />
         </div>
 
-        <p data-gsap="projects" className="section-subtitle mb-14">
+        <p data-gsap="projects" className="section-subtitle mb-10">
           Real-world projects showcasing my skills in cybersecurity and software development.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {projects.map((project) => {
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1600px] mx-auto">
+          {projects.map((project, index) => {
             const hasLiveUrl = Boolean(project.liveUrl && project.liveUrl !== "#")
             const hasGithubUrl = Boolean(project.githubUrl && project.githubUrl !== "#")
+            const isPhishGuardTile = project.title?.toLowerCase().includes("phishguard")
+            const displayTags = isPhishGuardTile ? fixedPhishGuardStack : (project.tags || [])
 
             return (
               <Card
                 key={project.title}
                 data-gsap="projects"
-                className="group relative overflow-hidden rounded-2xl section-card transform transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-[var(--shadow-glow)]"
+                className="section-card p-6 md:p-7 relative w-full max-w-3xl justify-self-center overflow-hidden rounded-2xl transition-all duration-300 ease-out transform hover:-translate-y-2 hover:shadow-[var(--shadow-glow)] group cyber-grid-bg"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-primary/8 via-transparent to-accent/8"></div>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-br from-primary/8 via-transparent to-accent/8"></div>
 
-                <div className="relative h-44 overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent"></div>
-                  {/* Glitch flicker overlay on hover */}
-                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 group-hover:animate-glitch-flicker transition-opacity pointer-events-none"></div>
+                <div className="relative z-10 flex h-full flex-col md:flex-row items-start gap-6">
+                  <div className="relative h-32 w-full md:w-40 md:h-32 shrink-0 overflow-hidden rounded-xl border border-border/80 bg-muted/40">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 160px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/55 via-transparent to-transparent"></div>
+                  </div>
+
+                  <div className="flex flex-1 flex-col gap-3 h-full">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className="px-2 py-1 rounded-md border border-border bg-muted text-[11px] font-mono text-muted-foreground">
+                          #{String(index + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className="text-xl md:text-2xl font-semibold text-foreground tracking-wide">{project.title}</h3>
+                        {project.status && (
+                          <span
+                            className={cn(
+                              "px-3 py-1.5 border rounded-full text-sm whitespace-nowrap",
+                              statusClassName(project.status)
+                            )}
+                          >
+                            {project.status}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+                    </div>
+
+                    <div
+                      className={cn(
+                        "mt-auto pb-1",
+                        isPhishGuardTile
+                          ? ""
+                          : "overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                      )}
+                    >
+                      <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground/75 font-mono">
+                        Tech Stack
+                      </p>
+                      <div
+                        className={cn(
+                          "flex flex-nowrap items-center whitespace-nowrap",
+                          isPhishGuardTile ? "gap-1" : "gap-1.5"
+                        )}
+                      >
+                        {displayTags.map((tag) => (
+                          <span
+                            key={tag}
+                            data-gsap="project-badge"
+                            className={cn(
+                              "shrink-0 bg-muted text-foreground border border-border rounded-full hover:border-primary/40 hover:shadow-[0_0_8px_hsl(var(--primary)/0.15)] transition-all",
+                              isPhishGuardTile ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-1 text-xs"
+                            )}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {hasLiveUrl ? (
+                        <Button size="sm" asChild className="min-w-[120px]">
+                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            Live Demo
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button size="sm" variant="outline" disabled className="min-w-[120px] opacity-70">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Demo Soon
+                        </Button>
+                      )}
+
+                      {!isPhishGuardTile && (
+                        hasGithubUrl ? (
+                          <Button size="sm" variant="outline" asChild className="min-w-[120px] hover:shadow-[0_0_10px_hsl(var(--primary)/0.2)]">
+                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                              <Github className="mr-2 h-4 w-4" />
+                              Code
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button size="sm" variant="outline" disabled className="min-w-[120px] opacity-70">
+                            <Github className="mr-2 h-4 w-4" />
+                            Code Soon
+                          </Button>
+                        )
+                      )}
+                    </div>
+                  </div>
                 </div>
-
-                <CardHeader className="pb-2 relative">
-                  <div className="flex items-start justify-between gap-3">
-                    <CardTitle className="text-foreground tracking-wide">{project.title}</CardTitle>
-                    {project.status && (
-                      <Badge variant="outline" className="border-primary/40 bg-primary/10 text-primary whitespace-nowrap">
-                        {project.status}
-                      </Badge>
-                    )}
-                  </div>
-                  <CardDescription className="text-muted-foreground leading-snug text-sm">{project.description}</CardDescription>
-                </CardHeader>
-
-                <CardContent className="pt-2 pb-3 relative">
-                  <div className="flex flex-wrap gap-2">
-                    {(project.tags || []).map((tag) => (
-                      <Badge key={tag} data-gsap="project-badge" variant="secondary" className="border border-border hover:border-primary/40 transition-colors">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-
-                <CardFooter className="gap-2 pt-2 relative">
-                  {hasLiveUrl ? (
-                    <Button size="sm" variant="outline" asChild className="flex-1 hover:shadow-[0_0_10px_hsl(var(--primary)/0.2)]">
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Live Demo
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button size="sm" variant="outline" disabled className="flex-1 opacity-70">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Demo Soon
-                    </Button>
-                  )}
-
-                  {hasGithubUrl ? (
-                    <Button size="sm" variant="outline" asChild className="flex-1 hover:shadow-[0_0_10px_hsl(var(--primary)/0.2)]">
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" />
-                        Code
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button size="sm" variant="outline" disabled className="flex-1 opacity-70">
-                      <Github className="mr-2 h-4 w-4" />
-                      Code Soon
-                    </Button>
-                  )}
-                </CardFooter>
               </Card>
             )
           })}

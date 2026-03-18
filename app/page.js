@@ -9,13 +9,15 @@ import { CertificatesSection } from "@/components/CertificatesSection"
 import { ContactSection } from "@/components/ContactSection"
 import { Footer } from "@/components/Footer"
 import { BackToTop } from "@/components/BackToTop"
+import { SiteBackground } from "@/components/SiteBackground"
 import { getPortfolioData } from "@/lib/portfolio"
 
 export default async function Home() {
   const data = await getPortfolioData()
 
   return (
-    <div className="min-h-screen relative overflow-x-clip">
+    <div className="min-h-screen relative isolate overflow-x-clip">
+      <SiteBackground />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
       <Navigation name={data.personal.name} />
       <HeroSection personal={data.personal} social={data.social} />
